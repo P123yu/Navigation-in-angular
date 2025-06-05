@@ -1,0 +1,55 @@
+
+
+
+// note:  here when we are using header component as a navbar to navigate to different-different component rather than using navigation directly on app  then we don't need to change 
+// app.routes.ts file 
+
+
+// generate header component
+
+ng g c header
+
+// in app.ts 
+
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { Header } from "./header/header";
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, Header],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected title = 'crud';
+
+}
+
+
+// in app.html 
+
+<app-header></app-header>
+<router-outlet />
+
+// in header.ts 
+
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-header',
+  imports: [RouterLink],
+  templateUrl: './header.html',
+  styleUrl: './header.css',
+})
+export class Header {}
+
+
+
+// in header.html   ==>  this is paste here from copy from app.html
+
+<a routerLink="">Home</a>
+<a routerLink="/about">About</a>
+<a routerLink="/contact">Contact</a>
+
